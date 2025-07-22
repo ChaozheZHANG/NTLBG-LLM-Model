@@ -1,0 +1,22 @@
+{
+  "available_datasets": [
+    "longvideobench",
+    "video_mme",
+    "mlvu"
+  ],
+  "total_videos": 6997,
+  "dataset_details": {
+    "longvideobench": {
+      "status": "ready",
+      "checked_at": "2024-07-22"
+    },
+    "video_mme": {
+      "status": "ready",
+      "checked_at": "2024-07-22"
+    },
+    "mlvu": {
+      "status": "ready",
+      "checked_at": "2024-07-22"
+    }
+  }
+}

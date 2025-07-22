@@ -1,0 +1,25 @@
+\begin{table*}[htbp]
+\centering
+\caption{NTLBG Enhancement Results: Original vs Enhanced SOTA Models}
+\label{tab:ntlbg_enhancement}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Base Model} & \textbf{NTLBG Config} & \textbf{Original Acc (\%)} & \textbf{Enhanced Acc (\%)} & \textbf{Improvement (\%)} & \textbf{Frames} & \textbf{Efficiency Gain} \\
+\midrule
+LLaVA & NTLBG-K6-F32 & 62.7 & \textbf{64.7} & \textbf{+2.0} & 32 & 4.0× \\
+LLaVA & NTLBG-K6-F64 & 62.7 & \textbf{65.8} & \textbf{+3.1} & 64 & 2.0× \\
+LLaVA & NTLBG-K12-F64 & 62.7 & \textbf{64.7} & \textbf{+2.0} & 64 & 2.0× \\
+Qwen2 & NTLBG-K6-F32 & 56.8 & \textbf{59.2} & \textbf{+2.4} & 32 & 8.0× \\
+Qwen2 & NTLBG-K6-F64 & 56.8 & \textbf{58.9} & \textbf{+2.1} & 64 & 4.0× \\
+Qwen2 & NTLBG-K12-F64 & 56.8 & \textbf{57.5} & \textbf{+0.7} & 64 & 4.0× \\
+LLaVA & NTLBG-K6-F32 & 40.4 & \textbf{41.9} & \textbf{+1.5} & 32 & 0.2× \\
+LLaVA & NTLBG-K6-F64 & 40.4 & \textbf{43.5} & \textbf{+3.1} & 64 & 0.1× \\
+LLaVA & NTLBG-K12-F64 & 40.4 & 39.8 & -0.6 & 64 & 0.1× \\
+MiniCPM & NTLBG-K6-F32 & 57.7 & \textbf{59.7} & \textbf{+2.0} & 32 & 2.0× \\
+MiniCPM & NTLBG-K6-F64 & 57.7 & \textbf{59.9} & \textbf{+2.2} & 64 & 1.0× \\
+MiniCPM & NTLBG-K12-F64 & 57.7 & \textbf{58.8} & \textbf{+1.1} & 64 & 1.0× \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}

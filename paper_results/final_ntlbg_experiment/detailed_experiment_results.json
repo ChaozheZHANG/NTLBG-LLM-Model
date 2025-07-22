@@ -1,0 +1,153 @@
+{
+  "experiment_info": {
+    "date": "2025-07-22T15:50:25.346036",
+    "type": "NTLBG-LLM vs SOTA Comparison",
+    "dataset": "LongVideoBench",
+    "total_models": 12
+  },
+  "comparison_results": [
+    {
+      "model": "GPT-4o",
+      "accuracy": 66.7,
+      "frames_used": 256,
+      "parameters": 1760000,
+      "category": "SOTA",
+      "efficiency_score": 26.0546875
+    },
+    {
+      "model": "LLaVA-Video-72B",
+      "accuracy": 64.9,
+      "frames_used": 128,
+      "parameters": 72000,
+      "category": "SOTA",
+      "efficiency_score": 50.70312500000001
+    },
+    {
+      "model": "Gemini-1.5-Pro",
+      "accuracy": 64.4,
+      "frames_used": 256,
+      "parameters": 175000,
+      "category": "SOTA",
+      "efficiency_score": 25.156250000000004
+    },
+    {
+      "model": "LLaVA-Video-7B",
+      "accuracy": 62.7,
+      "frames_used": 128,
+      "parameters": 7000,
+      "category": "SOTA",
+      "efficiency_score": 48.984375
+    },
+    {
+      "model": "InternVL2-40B",
+      "accuracy": 60.6,
+      "frames_used": 16,
+      "parameters": 40000,
+      "category": "SOTA",
+      "efficiency_score": 378.75
+    },
+    {
+      "model": "Qwen2-VL-7B",
+      "accuracy": 56.8,
+      "frames_used": 256,
+      "parameters": 7000,
+      "category": "SOTA",
+      "efficiency_score": 22.1875
+    },
+    {
+      "model": "LLaVA-1.5-13B",
+      "accuracy": 43.1,
+      "frames_used": 8,
+      "parameters": 13000,
+      "category": "SOTA",
+      "efficiency_score": 538.75
+    },
+    {
+      "model": "LLaVA-1.5-7B",
+      "accuracy": 40.4,
+      "frames_used": 8,
+      "parameters": 7000,
+      "category": "SOTA",
+      "efficiency_score": 505.0
+    },
+    {
+      "model": "NTLBG-LLM-NTLBG-K12",
+      "accuracy": 23.333333333333332,
+      "frames_used": 64,
+      "parameters": 727,
+      "category": "NTLBG (Ours)",
+      "efficiency_score": 3.645833333333333,
+      "representatives": 12
+    },
+    {
+      "model": "NTLBG-LLM-NTLBG-K6",
+      "accuracy": 13.333333333333334,
+      "frames_used": 32,
+      "parameters": 727,
+      "category": "NTLBG (Ours)",
+      "efficiency_score": 4.166666666666667,
+      "representatives": 6
+    },
+    {
+      "model": "NTLBG-LLM-NTLBG-K6-F64",
+      "accuracy": 10.0,
+      "frames_used": 64,
+      "parameters": 727,
+      "category": "NTLBG (Ours)",
+      "efficiency_score": 1.5625,
+      "representatives": 6
+    },
+    {
+      "model": "NTLBG-LLM-NTLBG-K3",
+      "accuracy": 0.0,
+      "frames_used": 32,
+      "parameters": 727,
+      "category": "NTLBG (Ours)",
+      "efficiency_score": 0.0,
+      "representatives": 3
+    }
+  ],
+  "ntlbg_results": [
+    {
+      "model": "NTLBG-LLM-NTLBG-K3",
+      "accuracy": 0.0,
+      "frames_used": 32,
+      "representatives": 3,
+      "efficiency_score": 0.0,
+      "parameters": 727
+    },
+    {
+      "model": "NTLBG-LLM-NTLBG-K6",
+      "accuracy": 13.333333333333334,
+      "frames_used": 32,
+      "representatives": 6,
+      "efficiency_score": 4.166666666666667,
+      "parameters": 727
+    },
+    {
+      "model": "NTLBG-LLM-NTLBG-K6-F64",
+      "accuracy": 10.0,
+      "frames_used": 64,
+      "representatives": 6,
+      "efficiency_score": 1.5625,
+      "parameters": 727
+    },
+    {
+      "model": "NTLBG-LLM-NTLBG-K12",
+      "accuracy": 23.333333333333332,
+      "frames_used": 64,
+      "representatives": 12,
+      "efficiency_score": 3.645833333333333,
+      "parameters": 727
+    }
+  ],
+  "best_ntlbg": {
+    "model": "NTLBG-LLM-NTLBG-K12",
+    "accuracy": 23.333333333333332,
+    "frames_used": 64,
+    "parameters": 727,
+    "category": "NTLBG (Ours)",
+    "efficiency_score": 3.645833333333333,
+    "representatives": 12
+  }
+}

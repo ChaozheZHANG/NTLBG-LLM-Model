@@ -1,0 +1,50 @@
+[
+  {
+    "Method": "NTLBG-LLM (Ours)",
+    "Accuracy": "0.4950",
+    "Accuracy (%)": "49.5%",
+    "Improvement (%)": "6.5%",
+    "Loss": "1.4124",
+    "Inference Time (s)": "0.0009",
+    "Parameters (M)": "1.1",
+    "Training Loss": "1.0160",
+    "Efficiency Score": "563.7",
+    "Samples": 200
+  },
+  {
+    "Method": "Uniform Sampling",
+    "Accuracy": "0.4350",
+    "Accuracy (%)": "43.5%",
+    "Improvement (%)": "0.5%",
+    "Loss": "1.4453",
+    "Inference Time (s)": "0.0009",
+    "Parameters (M)": "1.1",
+    "Training Loss": "0.9899",
+    "Efficiency Score": "492.5",
+    "Samples": 200
+  },
+  {
+    "Method": "Random Sampling",
+    "Accuracy": "0.4350",
+    "Accuracy (%)": "43.5%",
+    "Improvement (%)": "0.5%",
+    "Loss": "1.3591",
+    "Inference Time (s)": "0.0009",
+    "Parameters (M)": "1.1",
+    "Training Loss": "1.1232",
+    "Efficiency Score": "493.2",
+    "Samples": 200
+  },
+  {
+    "Method": "Top-K Selection",
+    "Accuracy": "0.4300",
+    "Accuracy (%)": "43.0%",
+    "Improvement (%)": "0.0%",
+    "Loss": "1.3990",
+    "Inference Time (s)": "0.0009",
+    "Parameters (M)": "1.1",
+    "Training Loss": "0.9746",
+    "Efficiency Score": "485.3",
+    "Samples": 200
+  }
+]

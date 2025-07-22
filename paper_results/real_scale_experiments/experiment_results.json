@@ -1,0 +1,38 @@
+[
+  {
+    "method": "NTLBG-LLM (Ours)",
+    "avg_loss": 0.0,
+    "accuracy": 0.0,
+    "avg_inference_time": 0.0,
+    "total_params": 209126933,
+    "samples_evaluated": 0,
+    "training_loss": Infinity
+  },
+  {
+    "method": "Uniform Sampling",
+    "avg_loss": 0.0,
+    "accuracy": 0.0,
+    "avg_inference_time": 0.0,
+    "total_params": 34902785,
+    "samples_evaluated": 0,
+    "training_loss": Infinity
+  },
+  {
+    "method": "Random Sampling",
+    "avg_loss": 0.0,
+    "accuracy": 0.0,
+    "avg_inference_time": 0.0,
+    "total_params": 34902785,
+    "samples_evaluated": 0,
+    "training_loss": Infinity
+  },
+  {
+    "method": "Top-K Selection",
+    "avg_loss": 0.0,
+    "accuracy": 0.0,
+    "avg_inference_time": 0.0,
+    "total_params": 34902785,
+    "samples_evaluated": 0,
+    "training_loss": Infinity
+  }
+]

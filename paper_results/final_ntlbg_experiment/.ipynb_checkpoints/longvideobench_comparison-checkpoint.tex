@@ -1,0 +1,25 @@
+\begin{table*}[htbp]
+\centering
+\caption{Performance Comparison on LongVideoBench: NTLBG-LLM vs State-of-the-Art}
+\label{tab:longvideobench_comparison}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lccccl}
+\toprule
+\textbf{Method} & \textbf{Accuracy (\%)} & \textbf{Frames} & \textbf{Params (M)} & \textbf{Efficiency} & \textbf{Type} \\
+\midrule
+GPT-4o & 66.7 & 256 & 1760000 & 26.05 & SOTA \\
+LLaVA-Video-72B & 64.9 & 128 & 72000 & 50.70 & SOTA \\
+Gemini-1.5-Pro & 64.4 & 256 & 175000 & 25.16 & SOTA \\
+LLaVA-Video-7B & 62.7 & 128 & 7000 & 48.98 & SOTA \\
+InternVL2-40B & 60.6 & 16 & 40000 & 378.75 & SOTA \\
+Qwen2-VL-7B & 56.8 & 256 & 7000 & 22.19 & SOTA \\
+LLaVA-1.5-13B & 43.1 & 8 & 13000 & 538.75 & SOTA \\
+LLaVA-1.5-7B & 40.4 & 8 & 7000 & 505.00 & SOTA \\
+\textbf{NTLBG-LLM-NTLBG-K12} & \textbf{23.3} & 64 & 727 & 3.65 & NTLBG (Ours) \\
+\textbf{NTLBG-LLM-NTLBG-K6} & \textbf{13.3} & 32 & 727 & 4.17 & NTLBG (Ours) \\
+\textbf{NTLBG-LLM-NTLBG-K6-F64} & \textbf{10.0} & 64 & 727 & 1.56 & NTLBG (Ours) \\
+\textbf{NTLBG-LLM-NTLBG-K3} & \textbf{0.0} & 32 & 727 & 0.00 & NTLBG (Ours) \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}

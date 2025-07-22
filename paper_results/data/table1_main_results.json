@@ -1,0 +1,38 @@
+[
+  {
+    "Method": "NTLBG-LLM (Ours)",
+    "Accuracy (%)": "0.01",
+    "Inference Time (s)": "0.0821",
+    "Speedup": "1.00x",
+    "Representatives": 6,
+    "Efficiency Score": "0.09",
+    "NTLBG Loss": "2179980960.8800"
+  },
+  {
+    "Method": "Uniform Sampling",
+    "Accuracy (%)": "0.00",
+    "Inference Time (s)": "0.0675",
+    "Speedup": "1.22x",
+    "Representatives": 10,
+    "Efficiency Score": "0.00",
+    "NTLBG Loss": "976426980.0000"
+  },
+  {
+    "Method": "Random Sampling",
+    "Accuracy (%)": "0.00",
+    "Inference Time (s)": "0.0722",
+    "Speedup": "1.14x",
+    "Representatives": 8,
+    "Efficiency Score": "0.05",
+    "NTLBG Loss": "1864569713.3200"
+  },
+  {
+    "Method": "Top-K Selection",
+    "Accuracy (%)": "0.00",
+    "Inference Time (s)": "0.0468",
+    "Speedup": "1.75x",
+    "Representatives": 12,
+    "Efficiency Score": "0.08",
+    "NTLBG Loss": "1088955885.1800"
+  }
+]

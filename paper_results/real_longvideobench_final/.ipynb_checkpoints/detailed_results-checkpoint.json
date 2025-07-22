@@ -1,0 +1,94 @@
+[
+  {
+    "variant": "NTLBG-LLM (K=3)",
+    "accuracy": 0.1,
+    "correct_predictions": 10,
+    "total_predictions": 100,
+    "avg_inference_time": 0.5069726347923279,
+    "avg_representatives_used": 3.0,
+    "efficiency_score": 0.19724930526272524,
+    "num_representatives": 3,
+    "description": "NTLBG with 3 statistical representatives",
+    "inference_times": [
+      0.8298530578613281,
+      0.2318432331085205,
+      0.5876593589782715,
+      0.5661249160766602,
+      0.6900322437286377,
+      0.30748891830444336,
+      0.5745699405670166,
+      0.18114590644836426,
+      0.5621852874755859,
+      0.5690310001373291
+    ]
+  },
+  {
+    "variant": "NTLBG-LLM (K=6)",
+    "accuracy": 0.36,
+    "correct_predictions": 36,
+    "total_predictions": 100,
+    "avg_inference_time": 0.5049520230293274,
+    "avg_representatives_used": 6.0,
+    "efficiency_score": 0.7129390191176467,
+    "num_representatives": 6,
+    "description": "NTLBG with 6 statistical representatives (optimal)",
+    "inference_times": [
+      0.577343225479126,
+      0.23404550552368164,
+      0.5709049701690674,
+      0.5790214538574219,
+      0.5764350891113281,
+      0.2487637996673584,
+      0.5696032047271729,
+      0.1826777458190918,
+      0.5892486572265625,
+      0.5691089630126953
+    ]
+  },
+  {
+    "variant": "NTLBG-LLM (K=12)",
+    "accuracy": 0.64,
+    "correct_predictions": 64,
+    "total_predictions": 100,
+    "avg_inference_time": 0.5130529499053955,
+    "avg_representatives_used": 11.62,
+    "efficiency_score": 1.247434597380276,
+    "num_representatives": 12,
+    "description": "NTLBG with 12 statistical representatives",
+    "inference_times": [
+      0.5759682655334473,
+      0.22942423820495605,
+      0.583510160446167,
+      0.5733926296234131,
+      0.6044139862060547,
+      0.2552177906036377,
+      0.5755150318145752,
+      0.18442225456237793,
+      0.5750627517700195,
+      0.5772361755371094
+    ]
+  },
+  {
+    "variant": "Baseline (Uniform)",
+    "accuracy": 0.22,
+    "correct_predictions": 22,
+    "total_predictions": 100,
+    "avg_inference_time": 0.5022293734550476,
+    "avg_representatives_used": 6.0,
+    "efficiency_score": 0.43804685991686876,
+    "num_representatives": 6,
+    "description": "Uniform frame sampling baseline",
+    "inference_times": [
+      0.5680313110351562,
+      0.23010468482971191,
+      0.5679597854614258,
+      0.5724389553070068,
+      0.5698883533477783,
+      0.25133705139160156,
+      0.5787544250488281,
+      0.1848311424255371,
+      0.5665938854217529,
+      0.5693340301513672
+    ]
+  }
+]

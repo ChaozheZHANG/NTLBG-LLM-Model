@@ -1,0 +1,17 @@
+\begin{table*}[htbp]
+\centering
+\caption{Performance Comparison on Real LongVideoBench Dataset}
+\label{tab:real_longvideobench_results}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Method} & \textbf{Representatives} & \textbf{Accuracy} & \textbf{Inference Time (s)} & \textbf{Efficiency} & \textbf{Description} \\
+\midrule
+(K=3) & 3 & 0.100 & 0.507 & 0.2 & NTLBG with 3 statistical repre... \\
+(K=6) & 6 & 0.360 & 0.505 & 0.7 & NTLBG with 6 statistical repre... \\
+\textbf{(K=12)} & 12 & \textbf{0.640} & 0.513 & 1.2 & NTLBG with 12 statistical repr... \\
+Baseline (Uniform) & 6 & 0.220 & 0.502 & 0.4 & Uniform frame sampling baselin... \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}

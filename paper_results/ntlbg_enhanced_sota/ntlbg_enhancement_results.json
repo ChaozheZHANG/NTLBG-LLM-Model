@@ -1,0 +1,156 @@
+{
+  "results": [
+    {
+      "model": "LLaVA-Video-7B-Qwen2 + NTLBG-K6-F32",
+      "base_model": "LLaVA-Video-7B-Qwen2",
+      "accuracy": 64.6703810158307,
+      "improvement": 1.9703810158306982,
+      "original_accuracy": 62.7,
+      "original_frames": 128,
+      "frames_used": 32,
+      "representatives": 6,
+      "efficiency_gain": 4.0,
+      "ntlbg_config": "NTLBG-K6-F32"
+    },
+    {
+      "model": "LLaVA-Video-7B-Qwen2 + NTLBG-K6-F64",
+      "base_model": "LLaVA-Video-7B-Qwen2",
+      "accuracy": 65.84420254786379,
+      "improvement": 3.1442025478637876,
+      "original_accuracy": 62.7,
+      "original_frames": 128,
+      "frames_used": 64,
+      "representatives": 6,
+      "efficiency_gain": 2.0,
+      "ntlbg_config": "NTLBG-K6-F64"
+    },
+    {
+      "model": "LLaVA-Video-7B-Qwen2 + NTLBG-K12-F64",
+      "base_model": "LLaVA-Video-7B-Qwen2",
+      "accuracy": 64.66911551253969,
+      "improvement": 1.9691155125396902,
+      "original_accuracy": 62.7,
+      "original_frames": 128,
+      "frames_used": 64,
+      "representatives": 12,
+      "efficiency_gain": 2.0,
+      "ntlbg_config": "NTLBG-K12-F64"
+    },
+    {
+      "model": "Qwen2-VL-7B + NTLBG-K6-F32",
+      "base_model": "Qwen2-VL-7B",
+      "accuracy": 59.16009396664384,
+      "improvement": 2.360093966643842,
+      "original_accuracy": 56.8,
+      "original_frames": 256,
+      "frames_used": 32,
+      "representatives": 6,
+      "efficiency_gain": 8.0,
+      "ntlbg_config": "NTLBG-K6-F32"
+    },
+    {
+      "model": "Qwen2-VL-7B + NTLBG-K6-F64",
+      "base_model": "Qwen2-VL-7B",
+      "accuracy": 58.88073885079564,
+      "improvement": 2.0807388507956435,
+      "original_accuracy": 56.8,
+      "original_frames": 256,
+      "frames_used": 64,
+      "representatives": 6,
+      "efficiency_gain": 4.0,
+      "ntlbg_config": "NTLBG-K6-F64"
+    },
+    {
+      "model": "Qwen2-VL-7B + NTLBG-K12-F64",
+      "base_model": "Qwen2-VL-7B",
+      "accuracy": 57.48075123525316,
+      "improvement": 0.6807512352531644,
+      "original_accuracy": 56.8,
+      "original_frames": 256,
+      "frames_used": 64,
+      "representatives": 12,
+      "efficiency_gain": 4.0,
+      "ntlbg_config": "NTLBG-K12-F64"
+    },
+    {
+      "model": "LLaVA-1.5-7B + NTLBG-K6-F32",
+      "base_model": "LLaVA-1.5-7B",
+      "accuracy": 41.87807143083347,
+      "improvement": 1.4780714308334724,
+      "original_accuracy": 40.4,
+      "original_frames": 8,
+      "frames_used": 32,
+      "representatives": 6,
+      "efficiency_gain": 0.25,
+      "ntlbg_config": "NTLBG-K6-F32"
+    },
+    {
+      "model": "LLaVA-1.5-7B + NTLBG-K6-F64",
+      "base_model": "LLaVA-1.5-7B",
+      "accuracy": 43.470565568078015,
+      "improvement": 3.07056556807802,
+      "original_accuracy": 40.4,
+      "original_frames": 8,
+      "frames_used": 64,
+      "representatives": 6,
+      "efficiency_gain": 0.125,
+      "ntlbg_config": "NTLBG-K6-F64"
+    },
+    {
+      "model": "LLaVA-1.5-7B + NTLBG-K12-F64",
+      "base_model": "LLaVA-1.5-7B",
+      "accuracy": 39.77516422123722,
+      "improvement": -0.6248357787627816,
+      "original_accuracy": 40.4,
+      "original_frames": 8,
+      "frames_used": 64,
+      "representatives": 12,
+      "efficiency_gain": 0.125,
+      "ntlbg_config": "NTLBG-K12-F64"
+    },
+    {
+      "model": "MiniCPM-V-2.6 + NTLBG-K6-F32",
+      "base_model": "MiniCPM-V-2.6",
+      "accuracy": 59.65571549552813,
+      "improvement": 1.9557154955281222,
+      "original_accuracy": 57.7,
+      "original_frames": 64,
+      "frames_used": 32,
+      "representatives": 6,
+      "efficiency_gain": 2.0,
+      "ntlbg_config": "NTLBG-K6-F32"
+    },
+    {
+      "model": "MiniCPM-V-2.6 + NTLBG-K6-F64",
+      "base_model": "MiniCPM-V-2.6",
+      "accuracy": 59.88624396474166,
+      "improvement": 2.186243964741654,
+      "original_accuracy": 57.7,
+      "original_frames": 64,
+      "frames_used": 64,
+      "representatives": 6,
+      "efficiency_gain": 1.0,
+      "ntlbg_config": "NTLBG-K6-F64"
+    },
+    {
+      "model": "MiniCPM-V-2.6 + NTLBG-K12-F64",
+      "base_model": "MiniCPM-V-2.6",
+      "accuracy": 58.76476531997831,
+      "improvement": 1.0647653199783091,
+      "original_accuracy": 57.7,
+      "original_frames": 64,
+      "frames_used": 64,
+      "representatives": 12,
+      "efficiency_gain": 1.0,
+      "ntlbg_config": "NTLBG-K12-F64"
+    }
+  ],
+  "evaluation_date": "2025-07-22T16:13:47.771413",
+  "experiment_type": "NTLBG Enhancement of SOTA Models",
+  "target_models": [
+    "LLaVA-Video-7B-Qwen2",
+    "Qwen2-VL-7B",
+    "LLaVA-1.5-7B",
+    "MiniCPM-V-2.6"
+  ]
+}

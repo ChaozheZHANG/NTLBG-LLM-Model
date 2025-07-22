@@ -1,0 +1,50 @@
+[
+  {
+    "avg_loss": 217998112.0425,
+    "avg_task_loss": 11.038460636138916,
+    "avg_ntlbg_loss": 2179980960.88,
+    "accuracy": 7.659313725490196e-05,
+    "avg_inference_time": 0.08206585341808843,
+    "std_inference_time": 0.0326718632296231,
+    "avg_representatives": 6.0,
+    "samples_evaluated": 26112,
+    "method": "NTLBG-LLM (Ours)",
+    "num_representatives": 6
+  },
+  {
+    "avg_loss": 97642708.49,
+    "avg_task_loss": 11.039002285003662,
+    "avg_ntlbg_loss": 976426980.0,
+    "accuracy": 0.0,
+    "avg_inference_time": 0.06745024288401884,
+    "std_inference_time": 0.03682142334922707,
+    "avg_representatives": 10.0,
+    "samples_evaluated": 26112,
+    "method": "Uniform Sampling",
+    "num_representatives": 10
+  },
+  {
+    "avg_loss": 186456986.03,
+    "avg_task_loss": 11.038045406341553,
+    "avg_ntlbg_loss": 1864569713.32,
+    "accuracy": 3.829656862745098e-05,
+    "avg_inference_time": 0.07221063913083543,
+    "std_inference_time": 0.038460068740353535,
+    "avg_representatives": 8.0,
+    "samples_evaluated": 26112,
+    "method": "Random Sampling",
+    "num_representatives": 8
+  },
+  {
+    "avg_loss": 108895601.2375,
+    "avg_task_loss": 11.038207607269287,
+    "avg_ntlbg_loss": 1088955885.18,
+    "accuracy": 3.829656862745098e-05,
+    "avg_inference_time": 0.04680465716941684,
+    "std_inference_time": 0.03710927205960772,
+    "avg_representatives": 12.0,
+    "samples_evaluated": 26112,
+    "method": "Top-K Selection",
+    "num_representatives": 12
+  }
+]

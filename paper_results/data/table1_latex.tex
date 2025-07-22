@@ -1,0 +1,16 @@
+
+\begin{table}[htbp]
+\centering
+\caption{Performance Comparison on Video Understanding Benchmarks}
+\label{tab:main_results}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Method} & \textbf{Accuracy (\%)} & \textbf{Time (s)} & \textbf{Speedup} & \textbf{\# Reps} & \textbf{Efficiency} & \textbf{NTLBG Loss} \\
+\midrule
+\textbf{NTLBG-LLM (Ours)} & 0.01 & 0.0821 & 1.00x & 6 & 0.09 & 2179980960.8800 \\
+Uniform Sampling & 0.00 & 0.0675 & 1.22x & 10 & 0.00 & 976426980.0000 \\
+Random Sampling & 0.00 & 0.0722 & 1.14x & 8 & 0.05 & 1864569713.3200 \\
+Top-K Selection & 0.00 & 0.0468 & 1.75x & 12 & 0.08 & 1088955885.1800 \\
+\bottomrule
+\end{tabular}
+\end{table}
