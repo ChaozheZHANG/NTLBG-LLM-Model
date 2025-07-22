@@ -1,0 +1,228 @@
+{
+  "experiment_name": "ablation_studies",
+  "base_config": "../aaai2026_longvideo_config.json",
+  "output_dir": "./outputs/ablation_studies",
+  
+  "ablation_experiments": {
+    "ntlbg_constraint": {
+      "description": "消融NTLBG统计约束的影响",
+      "variants": [
+        {
+          "name": "without_ntlbg",
+          "config_overrides": {
+            "loss_config.loss_weights.ntlbg_constraint": 0.0,
+            "ntlbg_config.constraint_type": "none"
+          }
+        },
+        {
+          "name": "soft_ntlbg",
+          "config_overrides": {
+            "loss_config.loss_weights.ntlbg_constraint": 0.4,
+            "ntlbg_config.constraint_type": "soft_equicontour"
+          }
+        },
+        {
+          "name": "hard_ntlbg",
+          "config_overrides": {
+            "loss_config.loss_weights.ntlbg_constraint": 0.8,
+            "ntlbg_config.constraint_type": "hard_equicontour"
+          }
+        }
+      ]
+    },
+    
+    "representative_count": {
+      "description": "消融代表点数量的影响",
+      "variants": [
+        {
+          "name": "rep_64",
+          "config_overrides": {
+            "model_config.num_representatives": 64
+          }
+        },
+        {
+          "name": "rep_128", 
+          "config_overrides": {
+            "model_config.num_representatives": 128
+          }
+        },
+        {
+          "name": "rep_256",
+          "config_overrides": {
+            "model_config.num_representatives": 256
+          }
+        },
+        {
+          "name": "rep_512",
+          "config_overrides": {
+            "model_config.num_representatives": 512
+          }
+        },
+        {
+          "name": "rep_1024",
+          "config_overrides": {
+            "model_config.num_representatives": 1024
+          }
+        }
+      ]
+    },
+    
+    "loss_weights": {
+      "description": "消融损失权重的影响",
+      "variants": [
+        {
+          "name": "task_only",
+          "config_overrides": {
+            "loss_config.loss_weights": {
+              "task": 1.0,
+              "ntlbg_constraint": 0.0,
+              "feature_alignment": 0.0,
+              "temporal_coherence": 0.0,
+              "information_preservation": 0.0,
+              "diversity_regularization": 0.0
+            }
+          }
+        },
+        {
+          "name": "balanced_weights",
+          "config_overrides": {
+            "loss_config.loss_weights": {
+              "task": 1.0,
+              "ntlbg_constraint": 0.5,
+              "feature_alignment": 0.5,
+              "temporal_coherence": 0.5,
+              "information_preservation": 0.5,
+              "diversity_regularization": 0.5
+            }
+          }
+        },
+        {
+          "name": "ntlbg_focused",
+          "config_overrides": {
+            "loss_config.loss_weights": {
+              "task": 1.0,
+              "ntlbg_constraint": 1.0,
+              "feature_alignment": 0.3,
+              "temporal_coherence": 0.2,
+              "information_preservation": 0.1,
+              "diversity_regularization": 0.1
+            }
+          }
+        }
+      ]
+    },
+    
+    "feature_alignment": {
+      "description": "消融特征对齐机制的影响",
+      "variants": [
+        {
+          "name": "no_alignment",
+          "config_overrides": {
+            "model_config.feature_alignment_method": "none",
+            "loss_config.loss_weights.feature_alignment": 0.0
+          }
+        },
+        {
+          "name": "distribution_alignment",
+          "config_overrides": {
+            "model_config.feature_alignment_method": "statistical_distribution",
+            "loss_config.loss_weights.feature_alignment": 0.5
+          }
+        },
+        {
+          "name": "structure_alignment",
+          "config_overrides": {
+            "model_config.feature_alignment_method": "structural_similarity",
+            "loss_config.loss_weights.feature_alignment": 0.5
+          }
+        }
+      ]
+    },
+    
+    "rich_points": {
+      "description": "消融富代表点构造的影响",
+      "variants": [
+        {
+          "name": "simple_points",
+          "config_overrides": {
+            "model_config.rich_points_enabled": false,
+            "model_config.context_window_size": 1
+          }
+        },
+        {
+          "name": "rich_points_small",
+          "config_overrides": {
+            "model_config.rich_points_enabled": true,
+            "model_config.context_window_size": 64
+          }
+        },
+        {
+          "name": "rich_points_large",
+          "config_overrides": {
+            "model_config.rich_points_enabled": true,
+            "model_config.context_window_size": 128
+          }
+        }
+      ]
+    },
+    
+    "temporal_modeling": {
+      "description": "消融时序建模组件的影响",
+      "variants": [
+        {
+          "name": "no_temporal",
+          "config_overrides": {
+            "attention_config.temporal_attention_layers": 0,
+            "longvideo_config.hierarchical_attention": false,
+            "loss_config.loss_weights.temporal_coherence": 0.0
+          }
+        },
+        {
+          "name": "simple_temporal",
+          "config_overrides": {
+            "attention_config.temporal_attention_layers": 2,
+            "longvideo_config.hierarchical_attention": false,
+            "loss_config.loss_weights.temporal_coherence": 0.2
+          }
+        },
+        {
+          "name": "full_temporal",
+          "config_overrides": {
+            "attention_config.temporal_attention_layers": 4,
+            "longvideo_config.hierarchical_attention": true,
+            "loss_config.loss_weights.temporal_coherence": 0.3
+          }
+        }
+      ]
+    }
+  },
+  
+  "evaluation_settings": {
+    "metrics": [
+      "accuracy",
+      "bleu",
+      "rouge", 
+      "bert_score",
+      "inference_time",
+      "memory_usage",
+      "representative_quality",
+      "feature_alignment_score",
+      "temporal_coherence_score"
+    ],
+    "statistical_test": "wilcoxon_signed_rank",
+    "significance_level": 0.05,
+    "num_runs": 3,
+    "save_detailed_results": true
+  },
+  
+  "execution_settings": {
+    "parallel_experiments": true,
+    "max_parallel_jobs": 2,
+    "auto_resume": true,
+    "early_stopping": {
+      "enabled": true,
+      "patience": 3,
+      "min_delta": 0.001
+    }
+  }
+} 

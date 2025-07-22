@@ -1,0 +1,59 @@
+# NTLBG-LLM H200训练配置
+project_name: "ntlbg-llm-h200"
+experiment_name: "full_experiment_v1"
+output_dir: "./outputs/main_experiment"
+
+# 模型配置
+model:
+  base_model: "./data/models/dialogpt-medium"
+  vision_encoder: "./data/models/clip-vit-large"
+  d_model: 768
+  num_representatives: 6
+  temperature: 0.1
+  max_video_frames: 100
+  max_text_length: 512
+
+# 数据配置
+data:
+  datasets:
+    - name: "longvideobench"
+      path: "./data/longvideobench"
+      weight: 1.0
+    - name: "video_mme" 
+      path: "./data/video_mme"
+      weight: 1.0
+    - name: "mlvu"
+      path: "./data/mlvu"
+      weight: 0.8
+  
+  max_frames: 100
+  image_size: [224, 224]
+  fps: 1
+
+# 训练配置 (H200优化)
+training:
+  batch_size: 16          # H200大显存
+  gradient_accumulation_steps: 2
+  learning_rate: 3e-5     # 稍高学习率
+  num_epochs: 8
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  
+  # H200优化
+  use_amp: true
+  use_compile: true       # PyTorch 2.0编译优化
+  
+  # 损失权重
+  loss_weights:
+    task: 1.0
+    ntlbg: 0.3
+    alignment: 0.2
+    context: 0.1
+
+# 系统配置
+system:
+  num_workers: 12         # H200大内存
+  pin_memory: true
+  device: "cuda"
+  seed: 42

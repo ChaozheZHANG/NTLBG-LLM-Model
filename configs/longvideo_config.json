@@ -1,0 +1,162 @@
+{
+  "model_name": "ntlbg_longvideo",
+  "description": "NTLBG-LLM configuration optimized for long video understanding",
+  "version": "1.0.0",
+  
+  "video_config": {
+    "max_frames": 4096,
+    "num_representatives": 512,
+    "frame_sampling_strategy": "uniform",
+    "temporal_stride": 1,
+    "frame_resolution": [224, 224],
+    "coverage_ratio": 0.125,
+    "min_representatives": 16,
+    "max_representatives_ratio": 0.5,
+    "representative_alignment": 8
+  },
+  
+  "model_config": {
+    "base_model": "Qwen/Qwen2-VL-7B-Instruct",
+    "ntlbg_hidden_size": 4096,
+    "ntlbg_intermediate_size": 11008,
+    "ntlbg_num_attention_heads": 32,
+    "ntlbg_num_key_value_heads": 32,
+    "ntlbg_max_position_embeddings": 32768,
+    "ntlbg_rope_theta": 1000000.0,
+    "ntlbg_attention_dropout": 0.0,
+    "ntlbg_use_flash_attention": true,
+    "ntlbg_gradient_checkpointing": true,
+    "rich_point_config": {
+      "enable": true,
+      "feature_dim": 1024,
+      "spatial_resolution": 7,
+      "temporal_context_length": 8,
+      "rich_point_layers": [8, 16, 24]
+    }
+  },
+  
+  "training_config": {
+    "batch_size": 1,
+    "gradient_accumulation_steps": 32,
+    "learning_rate": 5e-5,
+    "weight_decay": 0.01,
+    "max_steps": 10000,
+    "warmup_steps": 1000,
+    "save_steps": 500,
+    "eval_steps": 250,
+    "logging_steps": 50,
+    "optimizer": "AdamW",
+    "lr_scheduler": "cosine",
+    "max_grad_norm": 1.0,
+    "fp16": true,
+    "bf16": false,
+    "dataloader_num_workers": 8,
+    "dataloader_pin_memory": true,
+    "remove_unused_columns": false,
+    "ddp_find_unused_parameters": false
+  },
+  
+  "dataset_config": {
+    "train_datasets": [
+      {
+        "name": "LongVideoBench",
+        "path": "data/longvideo_bench",
+        "weight": 0.4,
+        "max_length": 4096,
+        "video_types": ["long_form", "documentary", "lecture"]
+      },
+      {
+        "name": "Video-MME",
+        "path": "data/video_mme",
+        "weight": 0.3,
+        "max_length": 4096,
+        "video_types": ["long_form", "medium_form"]
+      },
+      {
+        "name": "MLVU",
+        "path": "data/mlvu",
+        "weight": 0.3,
+        "max_length": 4096,
+        "video_types": ["long_form"]
+      }
+    ],
+    "val_datasets": [
+      {
+        "name": "LongVideoBench_val",
+        "path": "data/longvideo_bench_val",
+        "max_length": 4096
+      }
+    ],
+    "test_datasets": [
+      {
+        "name": "LongVideoBench_test",
+        "path": "data/longvideo_bench_test",
+        "max_length": 4096
+      }
+    ]
+  },
+  
+  "hardware_config": {
+    "gpu_type": "A100_40GB",
+    "num_gpus": 4,
+    "mixed_precision": "fp16",
+    "memory_optimization": {
+      "activation_checkpointing": true,
+      "gradient_checkpointing": true,
+      "cpu_offload": false,
+      "zero_stage": 2
+    },
+    "distributed_training": {
+      "strategy": "ddp",
+      "find_unused_parameters": false,
+      "gradient_as_bucket_view": true
+    }
+  },
+  
+  "evaluation_config": {
+    "metrics": [
+      "accuracy",
+      "temporal_consistency",
+      "long_video_comprehension",
+      "grounding_precision",
+      "inference_speed"
+    ],
+    "benchmark_datasets": [
+      "LongVideoBench",
+      "Video-MME",
+      "MLVU"
+    ],
+    "target_performance": {
+      "LongVideoBench": 0.70,
+      "Video-MME": 0.65,
+      "MLVU": 0.68
+    }
+  },
+  
+  "longvideo_variants": {
+    "moderate_long": {
+      "description": "5-10 minute videos, V100 32GB compatible",
+      "max_frames": 2048,
+      "num_representatives": 256,
+      "batch_size": 2,
+      "gradient_accumulation_steps": 16,
+      "gpu_memory_requirement": "32GB"
+    },
+    "long": {
+      "description": "10-20 minute videos, A100 40GB recommended",
+      "max_frames": 4096,
+      "num_representatives": 512,
+      "batch_size": 1,
+      "gradient_accumulation_steps": 32,
+      "gpu_memory_requirement": "40GB"
+    },
+    "very_long": {
+      "description": "20+ minute videos, A100 80GB required",
+      "max_frames": 8192,
+      "num_representatives": 1024,
+      "batch_size": 1,
+      "gradient_accumulation_steps": 64,
+      "gpu_memory_requirement": "80GB"
+    }
+  }
+} 

@@ -1,0 +1,256 @@
+{
+  "experiment_name": "sota_comparison",
+  "base_config": "../aaai2026_longvideo_config.json",
+  "output_dir": "./outputs/sota_comparison",
+  
+  "baseline_methods": {
+    "uniform_sampling": {
+      "name": "Uniform-Sampling",
+      "description": "均匀采样baseline",
+      "config_overrides": {
+        "data_config.frame_sampling_strategy": "uniform",
+        "model_config.num_representatives": 512,
+        "loss_config.loss_weights.ntlbg_constraint": 0.0,
+        "loss_config.loss_weights.feature_alignment": 0.0,
+        "ntlbg_config.constraint_type": "none"
+      },
+      "implementation": "src.baselines.uniform_sampling.UniformSampling"
+    },
+    
+    "clip_sampling": {
+      "name": "CLIP-based-Sampling",
+      "description": "基于CLIP的帧选择",
+      "config_overrides": {
+        "data_config.frame_sampling_strategy": "clip_based",
+        "model_config.num_representatives": 512,
+        "loss_config.loss_weights.ntlbg_constraint": 0.0,
+        "loss_config.loss_weights.feature_alignment": 0.0,
+        "ntlbg_config.constraint_type": "none"
+      },
+      "implementation": "src.baselines.clip_sampling.CLIPSampling"
+    },
+    
+    "mllm_frame_selection": {
+      "name": "M-LLM-FrameSelection",
+      "description": "现有多模态LLM的帧选择方法",
+      "config_overrides": {
+        "data_config.frame_sampling_strategy": "mllm_attention",
+        "model_config.num_representatives": 512,
+        "loss_config.loss_weights.ntlbg_constraint": 0.0,
+        "loss_config.loss_weights.feature_alignment": 0.0,
+        "ntlbg_config.constraint_type": "none"
+      },
+      "implementation": "src.baselines.mllm_sampling.MLLMFrameSelection"
+    },
+    
+    "sosampler": {
+      "name": "SOSampler",
+      "description": "Second-Order Sampling方法",
+      "config_overrides": {
+        "data_config.frame_sampling_strategy": "second_order",
+        "model_config.num_representatives": 512,
+        "loss_config.loss_weights.ntlbg_constraint": 0.0,
+        "loss_config.loss_weights.feature_alignment": 0.0,
+        "ntlbg_config.constraint_type": "none"
+      },
+      "implementation": "src.baselines.sosampler.SOSampler"
+    },
+    
+    "gens": {
+      "name": "GenS",
+      "description": "Generic Sampling方法",
+      "config_overrides": {
+        "data_config.frame_sampling_strategy": "generic",
+        "model_config.num_representatives": 512,
+        "loss_config.loss_weights.ntlbg_constraint": 0.0,
+        "loss_config.loss_weights.feature_alignment": 0.0,
+        "ntlbg_config.constraint_type": "none"
+      },
+      "implementation": "src.baselines.gens.GenericSampling"
+    },
+    
+    "video_xl": {
+      "name": "Video-XL",
+      "description": "Video-XL长视频理解方法",
+      "config_overrides": {
+        "model_config.base_model_name": "Video-XL",
+        "data_config.frame_sampling_strategy": "video_xl",
+        "model_config.num_representatives": 512,
+        "loss_config.loss_weights.ntlbg_constraint": 0.0,
+        "loss_config.loss_weights.feature_alignment": 0.0,
+        "ntlbg_config.constraint_type": "none"
+      },
+      "implementation": "src.baselines.video_xl.VideoXL"
+    },
+    
+    "qwen2_vl": {
+      "name": "Qwen2-VL-7B",
+      "description": "Qwen2-VL基线方法",
+      "config_overrides": {
+        "model_config.base_model_name": "Qwen/Qwen2-VL-7B-Instruct",
+        "data_config.frame_sampling_strategy": "qwen2_vl",
+        "model_config.num_representatives": 512,
+        "loss_config.loss_weights.ntlbg_constraint": 0.0,
+        "loss_config.loss_weights.feature_alignment": 0.0,
+        "ntlbg_config.constraint_type": "none"
+      },
+      "implementation": "src.baselines.qwen2_vl.Qwen2VL"
+    },
+    
+    "llava_video": {
+      "name": "LLaVA-Video-7B",
+      "description": "LLaVA-Video基线方法",
+      "config_overrides": {
+        "model_config.base_model_name": "liuhaotian/llava-v1.6-vicuna-7b",
+        "data_config.frame_sampling_strategy": "llava_video",
+        "model_config.num_representatives": 512,
+        "loss_config.loss_weights.ntlbg_constraint": 0.0,
+        "loss_config.loss_weights.feature_alignment": 0.0,
+        "ntlbg_config.constraint_type": "none"
+      },
+      "implementation": "src.baselines.llava_video.LLaVAVideo"
+    },
+    
+    "random_sampling": {
+      "name": "Random-Sampling",
+      "description": "随机采样baseline",
+      "config_overrides": {
+        "data_config.frame_sampling_strategy": "random",
+        "model_config.num_representatives": 512,
+        "loss_config.loss_weights.ntlbg_constraint": 0.0,
+        "loss_config.loss_weights.feature_alignment": 0.0,
+        "ntlbg_config.constraint_type": "none"
+      },
+      "implementation": "src.baselines.random_sampling.RandomSampling"
+    }
+  },
+  
+  "ntlbg_variants": {
+    "ntlbg_full": {
+      "name": "NTLBG-LLM (Full)",
+      "description": "完整的NTLBG-LLM方法",
+      "config_overrides": {}
+    },
+    
+    "ntlbg_lite": {
+      "name": "NTLBG-LLM (Lite)",
+      "description": "轻量版NTLBG-LLM",
+      "config_overrides": {
+        "model_config.num_representatives": 256,
+        "attention_config.temporal_attention_layers": 2,
+        "longvideo_config.memory_bank_size": 128
+      }
+    },
+    
+    "ntlbg_ultra": {
+      "name": "NTLBG-LLM (Ultra)",
+      "description": "增强版NTLBG-LLM",
+      "config_overrides": {
+        "model_config.num_representatives": 1024,
+        "attention_config.temporal_attention_layers": 6,
+        "longvideo_config.memory_bank_size": 512
+      }
+    }
+  },
+  
+  "evaluation_datasets": {
+    "LongVideoBench": {
+      "name": "LongVideoBench",
+      "focus": "长视频理解",
+      "avg_duration": 473,
+      "key_metrics": ["accuracy", "efficiency", "temporal_reasoning"],
+      "weight": 0.4
+    },
+    
+    "Video-MME": {
+      "name": "Video-MME",
+      "focus": "多模态理解",
+      "videos": 900,
+      "key_metrics": ["accuracy", "robustness", "multi_modal_alignment"],
+      "weight": 0.3
+    },
+    
+    "MLVU": {
+      "name": "MLVU",
+      "focus": "长视频QA",
+      "key_metrics": ["accuracy", "temporal_reasoning", "complex_reasoning"],
+      "weight": 0.3
+    },
+    
+    "ActivityNet": {
+      "name": "ActivityNet",
+      "focus": "动作识别",
+      "key_metrics": ["classification_accuracy", "speed", "action_localization"],
+      "weight": 0.2,
+      "optional": true
+    }
+  },
+  
+  "comparison_metrics": {
+    "accuracy_metrics": [
+      "exact_match",
+      "bleu_score",
+      "rouge_l",
+      "bert_score",
+      "accuracy@1",
+      "accuracy@5"
+    ],
+    
+    "efficiency_metrics": [
+      "inference_time",
+      "memory_usage",
+      "flops",
+      "throughput",
+      "model_size",
+      "training_time"
+    ],
+    
+    "quality_metrics": [
+      "representative_quality",
+      "information_preservation",
+      "feature_alignment_score",
+      "temporal_coherence",
+      "diversity_score"
+    ],
+    
+    "robustness_metrics": [
+      "cross_domain_accuracy",
+      "noise_robustness",
+      "temporal_shift_robustness",
+      "compression_robustness"
+    ]
+  },
+  
+  "statistical_analysis": {
+    "significance_test": "wilcoxon_signed_rank",
+    "confidence_level": 0.95,
+    "num_runs": 5,
+    "bootstrap_samples": 1000,
+    "effect_size_measure": "cohen_d",
+    "multiple_comparison_correction": "bonferroni"
+  },
+  
+  "visualization_config": {
+    "create_comparison_table": true,
+    "create_efficiency_plot": true,
+    "create_accuracy_vs_efficiency_plot": true,
+    "create_statistical_significance_plot": true,
+    "create_method_ranking_plot": true,
+    "create_dataset_specific_plots": true,
+    "save_latex_tables": true
+  },
+  
+  "execution_settings": {
+    "parallel_baselines": true,
+    "max_parallel_jobs": 3,
+    "auto_resume": true,
+    "checkpoint_frequency": 500,
+    "early_stopping": {
+      "enabled": true,
+      "patience": 5,
+      "min_delta": 0.001
+    },
+    "resource_monitoring": true,
+    "profiling_enabled": true
+  }
+} 

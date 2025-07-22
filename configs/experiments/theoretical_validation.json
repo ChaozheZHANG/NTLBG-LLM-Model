@@ -1,0 +1,259 @@
+{
+  "experiment_name": "theoretical_validation",
+  "base_config": "../aaai2026_longvideo_config.json",
+  "output_dir": "./outputs/theoretical_validation",
+  
+  "validation_experiments": {
+    "equicontour_property": {
+      "description": "验证代表点确实在同一等高线上",
+      "test_conditions": [
+        {
+          "name": "synthetic_gaussian",
+          "data_type": "synthetic",
+          "distribution": "multivariate_gaussian",
+          "dimensions": [256, 512, 768, 1024],
+          "sample_sizes": [1000, 2000, 4000, 8000]
+        },
+        {
+          "name": "real_video_features",
+          "data_type": "real",
+          "feature_extractor": "clip_vit_b32",
+          "video_types": ["action", "documentary", "animation", "sports"]
+        }
+      ],
+      "metrics": [
+        "mahalanobis_distance_variance",
+        "contour_deviation",
+        "statistical_significance"
+      ]
+    },
+    
+    "information_optimality": {
+      "description": "验证信息论最优性",
+      "theoretical_bounds": {
+        "mutual_information_lower_bound": true,
+        "entropy_preservation_ratio": true,
+        "kl_divergence_upper_bound": true
+      },
+      "comparison_methods": [
+        "random_sampling",
+        "uniform_sampling",
+        "cluster_sampling",
+        "importance_sampling"
+      ],
+      "metrics": [
+        "mutual_information",
+        "entropy_ratio",
+        "kl_divergence",
+        "fisher_information"
+      ]
+    },
+    
+    "convergence_analysis": {
+      "description": "验证算法收敛性和稳定性",
+      "convergence_criteria": [
+        "parameter_convergence",
+        "loss_convergence",
+        "statistical_convergence"
+      ],
+      "test_scenarios": [
+        {
+          "name": "varying_dimensions",
+          "feature_dims": [128, 256, 512, 768, 1024],
+          "num_representatives": [32, 64, 128, 256, 512]
+        },
+        {
+          "name": "varying_sample_sizes",
+          "sample_sizes": [100, 500, 1000, 2000, 5000],
+          "convergence_threshold": 1e-6
+        }
+      ],
+      "metrics": [
+        "convergence_rate",
+        "stability_measure",
+        "numerical_precision"
+      ]
+    },
+    
+    "robustness_analysis": {
+      "description": "验证方法的鲁棒性",
+      "perturbation_tests": [
+        {
+          "name": "gaussian_noise",
+          "noise_levels": [0.01, 0.05, 0.1, 0.2, 0.5],
+          "noise_type": "additive_gaussian"
+        },
+        {
+          "name": "outlier_contamination",
+          "contamination_ratios": [0.01, 0.05, 0.1, 0.2],
+          "outlier_type": "uniform_random"
+        },
+        {
+          "name": "distribution_mismatch",
+          "source_distribution": "gaussian",
+          "target_distributions": ["uniform", "exponential", "beta", "gamma"]
+        }
+      ],
+      "metrics": [
+        "performance_degradation",
+        "breakdown_point",
+        "influence_function"
+      ]
+    },
+    
+    "statistical_properties": {
+      "description": "验证统计学性质",
+      "property_tests": [
+        {
+          "name": "unbiasedness",
+          "test_type": "bias_estimation",
+          "num_bootstrap_samples": 1000
+        },
+        {
+          "name": "consistency",
+          "test_type": "sample_size_scaling",
+          "sample_sizes": [100, 500, 1000, 5000, 10000]
+        },
+        {
+          "name": "efficiency",
+          "test_type": "cramér_rao_bound",
+          "comparison_estimators": ["mle", "method_of_moments", "bayesian"]
+        }
+      ],
+      "hypothesis_tests": [
+        "kolmogorov_smirnov",
+        "anderson_darling",
+        "jarque_bera",
+        "shapiro_wilk"
+      ]
+    }
+  },
+  
+  "synthetic_data_generation": {
+    "gaussian_mixtures": {
+      "num_components": [2, 3, 5, 10],
+      "dimensions": [256, 512, 768],
+      "sample_sizes": [1000, 2000, 5000],
+      "separation_levels": ["well_separated", "overlapping", "highly_overlapping"]
+    },
+    
+    "video_like_features": {
+      "temporal_correlation": [0.1, 0.3, 0.5, 0.7, 0.9],
+      "spatial_correlation": [0.2, 0.4, 0.6, 0.8],
+      "noise_levels": [0.01, 0.05, 0.1, 0.2],
+      "feature_dimensions": [768, 1024, 1536]
+    }
+  },
+  
+  "mathematical_analysis": {
+    "eigenvalue_analysis": {
+      "compute_eigenvalues": true,
+      "analyze_spectral_properties": true,
+      "condition_number_analysis": true
+    },
+    
+    "optimization_landscape": {
+      "analyze_local_minima": true,
+      "compute_hessian": true,
+      "gradient_flow_analysis": true
+    },
+    
+    "asymptotic_analysis": {
+      "large_sample_behavior": true,
+      "high_dimensional_behavior": true,
+      "scaling_laws": true
+    }
+  },
+  
+  "comparison_with_theory": {
+    "classical_sampling_theory": {
+      "stratified_sampling": true,
+      "cluster_sampling": true,
+      "systematic_sampling": true,
+      "importance_sampling": true
+    },
+    
+    "information_theory": {
+      "rate_distortion_theory": true,
+      "source_coding_theorem": true,
+      "mutual_information_bounds": true
+    },
+    
+    "statistical_learning_theory": {
+      "pac_learning_bounds": true,
+      "rademacher_complexity": true,
+      "vc_dimension_analysis": true
+    }
+  },
+  
+  "visualization_config": {
+    "create_distribution_plots": true,
+    "create_convergence_plots": true,
+    "create_robustness_plots": true,
+    "create_eigenvalue_plots": true,
+    "create_contour_plots": true,
+    "create_3d_visualizations": true,
+    "save_statistical_tables": true,
+    "generate_theoretical_report": true
+  },
+  
+  "statistical_tests": {
+    "hypothesis_tests": [
+      {
+        "name": "equicontour_test",
+        "null_hypothesis": "points_on_same_contour",
+        "test_statistic": "mahalanobis_distance_variance",
+        "significance_level": 0.05
+      },
+      {
+        "name": "optimality_test",
+        "null_hypothesis": "information_optimality",
+        "test_statistic": "mutual_information_ratio",
+        "significance_level": 0.01
+      },
+      {
+        "name": "convergence_test",
+        "null_hypothesis": "algorithm_convergence",
+        "test_statistic": "convergence_rate",
+        "significance_level": 0.05
+      }
+    ],
+    
+    "bootstrap_procedures": {
+      "num_bootstrap_samples": 10000,
+      "confidence_levels": [0.9, 0.95, 0.99],
+      "bias_correction": true,
+      "acceleration_correction": true
+    }
+  },
+  
+  "numerical_experiments": {
+    "precision_analysis": {
+      "floating_point_precision": ["float32", "float64"],
+      "numerical_stability_tests": true,
+      "condition_number_monitoring": true
+    },
+    
+    "scalability_analysis": {
+      "time_complexity_empirical": true,
+      "space_complexity_empirical": true,
+      "scaling_exponents": true
+    },
+    
+    "algorithmic_variants": {
+      "test_different_initializations": true,
+      "test_different_optimization_methods": true,
+      "test_different_stopping_criteria": true
+    }
+  },
+  
+  "execution_settings": {
+    "num_repetitions": 100,
+    "random_seeds": [42, 123, 456, 789, 1011],
+    "parallel_execution": true,
+    "max_parallel_jobs": 8,
+    "checkpoint_frequency": 10,
+    "auto_resume": true,
+    "detailed_logging": true
+  }
+} 

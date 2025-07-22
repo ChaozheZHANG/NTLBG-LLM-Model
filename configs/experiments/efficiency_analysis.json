@@ -1,0 +1,247 @@
+{
+  "experiment_name": "efficiency_analysis",
+  "base_config": "../aaai2026_longvideo_config.json",
+  "output_dir": "./outputs/efficiency_analysis",
+  
+  "analysis_scenarios": {
+    "video_length_scaling": {
+      "description": "分析不同视频长度下的效率表现",
+      "video_lengths": [30, 60, 300, 600, 900, 1800, 3600],
+      "frame_counts": [900, 1800, 9000, 18000, 27000, 54000, 108000],
+      "metrics": ["inference_time", "memory_usage", "flops", "throughput"]
+    },
+    
+    "representative_count_scaling": {
+      "description": "分析不同代表点数量下的效率表现",
+      "representative_counts": [32, 64, 128, 256, 512, 1024, 2048],
+      "metrics": ["inference_time", "memory_usage", "model_size", "training_time"]
+    },
+    
+    "batch_size_scaling": {
+      "description": "分析不同批次大小下的效率表现",
+      "batch_sizes": [1, 2, 4, 8, 16],
+      "metrics": ["throughput", "memory_usage", "gpu_utilization"]
+    },
+    
+    "hardware_comparison": {
+      "description": "在不同硬件上的效率对比",
+      "hardware_configs": [
+        {
+          "name": "V100_32GB",
+          "gpu_memory": 32,
+          "compute_capability": "7.0"
+        },
+        {
+          "name": "A100_40GB",
+          "gpu_memory": 40,
+          "compute_capability": "8.0"
+        },
+        {
+          "name": "A100_80GB",
+          "gpu_memory": 80,
+          "compute_capability": "8.0"
+        }
+      ]
+    }
+  },
+  
+  "efficiency_metrics": {
+    "inference_time": {
+      "unit": "seconds",
+      "components": [
+        "video_loading_time",
+        "feature_extraction_time",
+        "ntlbg_selection_time",
+        "llm_inference_time",
+        "post_processing_time"
+      ],
+      "aggregation": "mean",
+      "warmup_runs": 3,
+      "measurement_runs": 10
+    },
+    
+    "memory_usage": {
+      "unit": "GB",
+      "components": [
+        "video_features_memory",
+        "model_parameters_memory",
+        "intermediate_activations_memory",
+        "optimizer_states_memory",
+        "peak_memory_usage"
+      ],
+      "measurement_frequency": "every_100_steps"
+    },
+    
+    "flops": {
+      "unit": "GFLOPS",
+      "components": [
+        "feature_extraction_flops",
+        "ntlbg_computation_flops",
+        "attention_computation_flops",
+        "llm_forward_flops",
+        "total_flops"
+      ],
+      "profiling_tool": "fvcore"
+    },
+    
+    "throughput": {
+      "unit": "videos_per_second",
+      "measurement_duration": 300,
+      "include_data_loading": true
+    },
+    
+    "model_size": {
+      "unit": "MB",
+      "components": [
+        "base_model_size",
+        "ntlbg_module_size",
+        "additional_parameters_size",
+        "total_model_size"
+      ]
+    },
+    
+    "training_efficiency": {
+      "unit": "hours",
+      "components": [
+        "training_time_per_epoch",
+        "convergence_time",
+        "gpu_hours_total",
+        "memory_efficiency_ratio"
+      ]
+    }
+  },
+  
+  "comparison_baselines": {
+    "uniform_sampling": {
+      "frame_selection_method": "uniform",
+      "expected_speedup": 1.0
+    },
+    
+    "clip_sampling": {
+      "frame_selection_method": "clip_based",
+      "expected_speedup": 0.8
+    },
+    
+    "qwen2_vl": {
+      "frame_selection_method": "qwen2_vl_default",
+      "expected_speedup": 0.6
+    },
+    
+    "llava_video": {
+      "frame_selection_method": "llava_video_default",
+      "expected_speedup": 0.7
+    },
+    
+    "ntlbg_full": {
+      "frame_selection_method": "ntlbg_statistical",
+      "expected_speedup": 2.5
+    }
+  },
+  
+  "profiling_config": {
+    "enable_pytorch_profiler": true,
+    "enable_nvidia_profiler": true,
+    "enable_memory_profiler": true,
+    "profile_frequency": 100,
+    "save_traces": true,
+    "trace_format": "chrome",
+    "activities": ["cpu", "cuda"],
+    "record_shapes": true,
+    "profile_memory": true,
+    "with_stack": true
+  },
+  
+  "optimization_analysis": {
+    "mixed_precision": {
+      "test_fp16": true,
+      "test_bf16": true,
+      "measure_accuracy_drop": true
+    },
+    
+    "gradient_checkpointing": {
+      "test_enabled": true,
+      "test_disabled": true,
+      "measure_speed_tradeoff": true
+    },
+    
+    "flash_attention": {
+      "test_enabled": true,
+      "test_disabled": true,
+      "measure_memory_savings": true
+    },
+    
+    "model_compilation": {
+      "test_torch_compile": true,
+      "test_tensorrt": true,
+      "measure_compilation_time": true
+    }
+  },
+  
+  "scaling_analysis": {
+    "strong_scaling": {
+      "description": "固定问题规模，增加GPU数量",
+      "gpu_counts": [1, 2, 4, 8],
+      "problem_size": "fixed",
+      "measure_efficiency": true
+    },
+    
+    "weak_scaling": {
+      "description": "每个GPU的工作量固定，增加GPU数量",
+      "gpu_counts": [1, 2, 4, 8],
+      "problem_size": "proportional",
+      "measure_efficiency": true
+    }
+  },
+  
+  "benchmark_datasets": {
+    "micro_benchmark": {
+      "name": "Micro Benchmark",
+      "video_count": 100,
+      "avg_duration": 300,
+      "purpose": "细粒度性能分析"
+    },
+    
+    "standard_benchmark": {
+      "name": "Standard Benchmark",
+      "video_count": 1000,
+      "avg_duration": 500,
+      "purpose": "标准性能对比"
+    },
+    
+    "stress_test": {
+      "name": "Stress Test",
+      "video_count": 100,
+      "avg_duration": 1800,
+      "purpose": "极限性能测试"
+    }
+  },
+  
+  "visualization_config": {
+    "create_speed_comparison_plot": true,
+    "create_memory_usage_plot": true,
+    "create_throughput_plot": true,
+    "create_efficiency_heatmap": true,
+    "create_scaling_curves": true,
+    "create_breakdown_charts": true,
+    "save_performance_tables": true,
+    "generate_optimization_report": true
+  },
+  
+  "statistical_analysis": {
+    "num_runs": 10,
+    "confidence_interval": 0.95,
+    "outlier_detection": true,
+    "normality_test": true,
+    "significance_test": "mann_whitney_u"
+  },
+  
+  "execution_settings": {
+    "warmup_iterations": 5,
+    "measurement_iterations": 20,
+    "cooldown_time": 10,
+    "monitor_gpu_temperature": true,
+    "monitor_power_consumption": true,
+    "auto_gc": true,
+    "clear_cache": true
+  }
+} 
