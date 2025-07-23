@@ -1,0 +1,98 @@
+{
+  "sota_results": {
+    "GPT-4o (0513)": 66.7,
+    "Aria (256)": 65.0,
+    "LLaVA-Video-72B-Qwen2": 64.9,
+    "Gemini-1.5-Pro": 64.4,
+    "LLaVA-OneVision-QWen2-72B-OV": 63.2,
+    "LLaVA-Video-7B-Qwen2": 62.7,
+    "Gemini-1.5-Flash": 62.4,
+    "GPT-4-Turbo": 60.7,
+    "InternVL2-40B": 60.6,
+    "GPT-4o-mini": 58.8,
+    "Qwen2-VL-7B": 56.8,
+    "LLaVA-1.5-13B": 43.1,
+    "LLaVA-1.5-7B": 40.4
+  },
+  "ntlbg_results": [],
+  "all_results": {
+    "GPT-4o (0513)": {
+      "accuracy": 66.7,
+      "type": "SOTA",
+      "inference_time": null,
+      "num_representatives": null
+    },
+    "Aria (256)": {
+      "accuracy": 65.0,
+      "type": "SOTA",
+      "inference_time": null,
+      "num_representatives": null
+    },
+    "LLaVA-Video-72B-Qwen2": {
+      "accuracy": 64.9,
+      "type": "SOTA",
+      "inference_time": null,
+      "num_representatives": null
+    },
+    "Gemini-1.5-Pro": {
+      "accuracy": 64.4,
+      "type": "SOTA",
+      "inference_time": null,
+      "num_representatives": null
+    },
+    "LLaVA-OneVision-QWen2-72B-OV": {
+      "accuracy": 63.2,
+      "type": "SOTA",
+      "inference_time": null,
+      "num_representatives": null
+    },
+    "LLaVA-Video-7B-Qwen2": {
+      "accuracy": 62.7,
+      "type": "SOTA",
+      "inference_time": null,
+      "num_representatives": null
+    },
+    "Gemini-1.5-Flash": {
+      "accuracy": 62.4,
+      "type": "SOTA",
+      "inference_time": null,
+      "num_representatives": null
+    },
+    "GPT-4-Turbo": {
+      "accuracy": 60.7,
+      "type": "SOTA",
+      "inference_time": null,
+      "num_representatives": null
+    },
+    "InternVL2-40B": {
+      "accuracy": 60.6,
+      "type": "SOTA",
+      "inference_time": null,
+      "num_representatives": null
+    },
+    "GPT-4o-mini": {
+      "accuracy": 58.8,
+      "type": "SOTA",
+      "inference_time": null,
+      "num_representatives": null
+    },
+    "Qwen2-VL-7B": {
+      "accuracy": 56.8,
+      "type": "SOTA",
+      "inference_time": null,
+      "num_representatives": null
+    },
+    "LLaVA-1.5-13B": {
+      "accuracy": 43.1,
+      "type": "SOTA",
+      "inference_time": null,
+      "num_representatives": null
+    },
+    "LLaVA-1.5-7B": {
+      "accuracy": 40.4,
+      "type": "SOTA",
+      "inference_time": null,
+      "num_representatives": null
+    }
+  }
+}

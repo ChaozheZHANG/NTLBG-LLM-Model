@@ -1,37 +1,24 @@
-# 视频数据文件
+# 排除数据集
+data/longvideobench/
+data/longvideobench/*
 *.mp4
 *.avi
 *.mov
 *.mkv
-*.webm
-*.flv
-videos_chunked_*.zip
-datasets/LongVideoBench/videos/
-datasets/*/videos/
 
-# 大的压缩包
-datasets/LongVideoBench/videos_chunked_*.zip
+# 排除大文件
+*.pth
+*.bin
+*.safetensors
+models/
+checkpoints/
 
-# 大的模型文件
-models/ntlbg_llm_base.pth
-outputs/checkpoints/*.pt
-outputs/models/*.pth
+# 排除日志
+*.log
+nohup.out
 
-# Python缓存
+# 排除临时文件
 __pycache__/
 *.pyc
 *.pyo
-
-# IDE文件
-.vscode/
-.idea/
-*.swp
-
-# 系统文件
 .DS_Store
-Thumbs.db
-
-# 日志文件
-*.log
-training.log
-LongVideoBench_official/
