@@ -1,24 +1,11 @@
-# 排除数据集
-data/longvideobench/
-data/longvideobench/*
+data/
 *.mp4
 *.avi
 *.mov
-*.mkv
-
-# 排除大文件
 *.pth
+*.pt
+*.ckpt
 *.bin
-*.safetensors
-models/
-checkpoints/
-
-# 排除日志
 *.log
-nohup.out
-
-# 排除临时文件
 __pycache__/
-*.pyc
-*.pyo
-.DS_Store
+.ipynb_checkpoints/
